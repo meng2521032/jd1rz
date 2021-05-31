@@ -36,7 +36,7 @@ if ($.isNode()) {
   cookiesArr = [$.getdata('CookieJD'), $.getdata('CookieJD2'), ...jsonParse($.getdata('CookiesJD') || "[]").map(item => item.cookie)].filter(item => !!item);
 }
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
-let inviteCodes = ['']
+let inviteCodes = ['yyN6H1cWlYMjfoObW5h_1s8YuJH3bXJPDrKvpTzf9CEY@RtGKzb2nQlmld4CSH9U1hJ4S4N9F9Zbq8TQT-VWNX5WS7v58lg@RtGKk5XtJVDeKOrSYbJomngXVXj-XL6jAe_6xfsLQ75r4Itz@RtGKze6tEFmnKoDLFt061FyMYRv7lgObF14ISgZtcvZoO95QXw']
 !(async () => {
   if (!cookiesArr[0]) {
     $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
@@ -68,11 +68,11 @@ let inviteCodes = ['']
       }
       await shareCodesFormat()
       await getInfo('',true);
-      for (let i = 0; i < 7; ++i) {
-        console.log(`\n开始助力 【${$.newShareCodes[i]}】`)
+      for (let i = 0; i < $.newShareCodes.length; ++i) {
+        console.log(`开始助力 【${$.newShareCodes[i]}】`)
         let res = await getInfo($.newShareCodes[i])
-        if (res && res['data'] && res['data']['bizCode'] === 0) {
-          if (res['data']['result']['toasts'] && res['data']['result']['toasts'][0] && res['data']['result']['toasts'][0]['status'] === '3') {
+        if (res && res['data']['bizCode'] === 0) {
+          if (res['data']['result']['toasts'] && res['data']['result']['toasts'][0]['status'] === '3') {
             console.log(`助力次数已耗尽，跳出`)
             break
           }
